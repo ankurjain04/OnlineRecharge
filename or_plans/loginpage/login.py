@@ -8,7 +8,7 @@ class LoginLocators():
        - This class provides all the locators which is related to Login page
     """
 
-    VERIFY_PAGE = "Prepaid"
+    VERIFY_PAGE = "/html/body/main/section[4]/div/div[3]/div/div[1]/h3/span"
 
 class Login(CommonUI):
     """
@@ -62,7 +62,7 @@ class Login(CommonUI):
         :Return: Bool : True on Pass and False on Failures
         """
 
-        status = self.is_element_present(LoginLocators.VERIFY_PAGE,locatorType="linktext")
+        status = self.is_element_present(LoginLocators.VERIFY_PAGE,locatorType="xpath")
         if status == True:
             self.information("Page Open Successfully")
         return status

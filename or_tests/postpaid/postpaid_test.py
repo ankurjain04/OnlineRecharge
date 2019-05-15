@@ -49,3 +49,15 @@ class PostpaidTest(unittest.TestCase):
         time.sleep(5)
         verify_button = self.po.verify_order_button()
         assert verify_button == True, "Clicking on order button failed"
+
+    def test_multilingual_flexible_important_button_125(self):
+        result_login = self.lp.verify_page_opened()
+        assert result_login == True, "Failed"
+        self.po.click_flexible_option()
+        time.sleep(5)
+        result = self.po.select_language("arabic")
+        assert result == True, "Selecting language failed"
+        self.po.click_flex_important_button()
+        verify_button = self.po.verify_imp_button()
+        time.sleep(2)
+        assert verify_button == True, "Clicking on important button failed"

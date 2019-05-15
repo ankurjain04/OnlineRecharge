@@ -9,12 +9,13 @@ class PostpaidLocators():
     """
 
     IMPORTANT_BUTTON_125 = "/html/body/main/section[4]/div/div[3]/div/div[4]/div[17]/div/div[4]/div[8]/button[1]"
-    IMP_FLEX_BTN_125 = "/html/body/main/section[4]/div/div[3]/div/div[4]/div[18]/div/div[4]/div[8]/button[1]"
-    VERIFY_IMP_BUTTON_125 = "//div[@id='important-to-know']//div[contains(text(),'This is important to know')]"
+    IMP_FLEX_BTN_125 = "/html/body/main/section[4]/div/div[3]/div/div[4]/div[18]/div/div[4]/div[7]/button[1]"
+    VERIFY_IMP_BUTTON_125 = "//div[@id='important-to-know']//div[@class='plans-landing--popup-title']"
     ORDER_BUTTON_125 = "/html/body/main/section[4]/div/div[3]/div/div[4]/div[17]/div/div[4]/div[7]/button[2]"
     ORD_FLEX_BTN_125 = "/html/body/main/section[4]/div/div[3]/div/div[4]/div[18]/div/div[4]/div[8]/button[2]"
     VERIFY_ORDER_BUTTON_125="/html/body/main/div/div/div/div/div[2]/span[2]/button"
     FLEXIBLE_OPTION = "//label[@for='national']"
+    SELECT_LANGUAGE = "//a[@id='desktop-language-change_{}']"
 
 class PostpaidPlans(CommonUI):
     """
@@ -139,3 +140,14 @@ class PostpaidPlans(CommonUI):
         """
         self.element_click(PostpaidLocators.ORD_FLEX_BTN_125, locatorType="xpath")
 
+    def select_language(self,language):
+        if language.lower() == 'english':
+            lang = PostpaidLocators.SELECT_LANGUAGE.format('en')
+        elif language.lower() == 'arabic':
+            lang = PostpaidLocators.SELECT_LANGUAGE.format('ar')
+        else:
+            print "Select language either english or arabic"
+            return False
+
+
+        return self.element_click(lang,locatorType="xpath")
