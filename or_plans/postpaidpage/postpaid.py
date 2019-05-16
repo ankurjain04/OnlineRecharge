@@ -141,6 +141,7 @@ class PostpaidPlans(CommonUI):
         self.element_click(PostpaidLocators.ORD_FLEX_BTN_125, locatorType="xpath")
 
     def select_language(self,language):
+
         if language.lower() == 'english':
             lang = PostpaidLocators.SELECT_LANGUAGE.format('en')
         elif language.lower() == 'arabic':
@@ -148,6 +149,7 @@ class PostpaidPlans(CommonUI):
         else:
             print "Select language either english or arabic"
             return False
-
-
+        print "****************"
+        # element = self.driver.find_element_by_xpath(lang)
+        self.driver.execute_script("scrollBy(0,-500);")
         return self.element_click(lang,locatorType="xpath")
